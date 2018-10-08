@@ -1,0 +1,135 @@
+{
+	"name": "touchuiwx",
+	"displayName": "TouchWX",
+	"description": "微信小程序开发框架",
+	"version": "1.1.2",
+	"publisher": "UILeader",
+	"engines": {
+		"vscode": "^1.18.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:touchuiwx.init",
+		"onCommand:touchuiwx.createDemo",
+		"onCommand:touchuiwx.createPage",
+		"onCommand:touchuiwx.install",
+		"onCommand:touchuiwx.dev",
+		"onCommand:touchuiwx.exportApp",
+		"onCommand:touchuiwx.importApp",
+		"workspaceContains:src/app.wxa"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"configuration": {
+			"title": "TouchWX 配置",
+			"properties": {
+				"touchuiwx.enable": {
+					"type": "boolean",
+					"default": false,
+					"description": "识别为TouchWX 工程"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "touchuiwx.init",
+				"title": "TouchWX 识别为TouchWX工程",
+				"category": "TouchWX"
+			},
+			{
+				"command": "touchuiwx.createDemo",
+				"title": "TouchWX 创建基础工程",
+				"category": "TouchWX"
+			},
+			{
+				"command": "touchuiwx.createPage",
+				"title": "TouchWX 新建页面",
+				"category": "TouchWX"
+			},
+			{
+				"command": "touchuiwx.install",
+				"title": "TouchWX 安装项目依赖",
+				"category": "TouchWX"
+			},
+			{
+				"command": "touchuiwx.dev",
+				"title": "TouchWX 启动开发服务",
+				"category": "TouchWX"
+			},
+			{
+				"command": "touchuiwx.exportApp",
+				"title": "TouchWX 导出为TouchUI工程",
+				"category": "TouchWX"
+			},
+			{
+				"command": "touchuiwx.importApp",
+				"title": "TouchWX 从TouchUI工程导入",
+				"category": "TouchWX"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "touchuiwx.init",
+					"group": "touchuiwx@1",
+					"when": "!config.touchuiwx.enable"
+				},
+				{
+					"command": "touchuiwx.createDemo",
+					"group": "touchuiwx@2"
+				},
+				{
+					"command": "touchuiwx.createPage",
+					"group": "touchuiwx@3",
+					"when": "config.touchuiwx.enable"
+				},
+				{
+					"command": "touchuiwx.dev",
+					"group": "touchuiwx@5",
+					"when": "config.touchuiwx.enable"
+				},
+				{
+					"command": "touchuiwx.exportApp",
+					"group": "touchuiwx@6",
+					"when": "config.touchuiwx.enable"
+				},
+				{
+					"command": "touchuiwx.importApp",
+					"group": "touchuiwx@7"
+				},
+				{
+					"command": "touchuiwx.install",
+					"group": "touchuiwx@8",
+					"when": "config.touchuiwx.enable"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"build": "vsce package"
+	},
+	"devDependencies": {
+		"typescript": "^2.5.3",
+		"vscode": "^1.1.5",
+		"@types/node": "^7.0.43",
+		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"textfile": "^1.1.5"
+	},
+	"__metadata": {
+		"id": "51c44e3d-4960-4a98-805a-24ef69f526e4",
+		"publisherId": "f0080130-52a2-42c1-ba7c-7016b3494811",
+		"publisherDisplayName": "UILeader"
+	}
+}
